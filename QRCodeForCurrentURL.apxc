@@ -1,0 +1,14 @@
+public class QRCodeExtension {
+    public QRCodeExtension(Apexpages.StandardController std){
+    }
+    
+    public String getTheURL() {
+        String theID = ApexPages.currentPage().getParameters().get('Id');
+        String theURL = System.Url.getSalesforceBaseUrl().toExternalForm();
+        Integer startPos = theURL.indexOf('.');
+        Integer endPos = theURL.indexOf('.', startPos + 1);        
+        String fixedURL = theURL.substring(startPos + 1, endPos + 1);
+        
+        return 'https://' + fixedURL + 'salesforce.com/' + theID;
+    }
+}

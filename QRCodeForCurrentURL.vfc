@@ -1,0 +1,17 @@
+<apex:component >
+    <apex:includeScript value="{!URLFOR($Resource.qr_code_generator,'jquery.min.js')}"/>
+    <apex:includeScript value="{!URLFOR($Resource.qr_code_generator,'jquery.qrcode.min.js')}"/>
+    
+    <apex:attribute name="theURL" type="string" description="URL passed in by the VF Page" />
+    
+    <div id="qrcodeCanvas">
+        <p>URL: {!theURL} </p>
+        <canvas width="256" height="256"></canvas>
+    </div>
+    <script type="text/javascript"> 
+        jQuery('#qrcodeCanvas').qrcode({
+            text    : "{!theURL}"
+        }); 
+    </script>
+    
+</apex:component>

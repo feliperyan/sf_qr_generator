@@ -1,0 +1,16 @@
+@isTest
+public class QRCodeExtenstionTester {
+    static testMethod void testgetTheURL() {
+        PageReference testPage = Page.QRCodeForCurrentURLPage;
+        Test.setCurrentPage(testPage);
+        Contact ctc = new Contact();
+		Apexpages.StandardController std = new Apexpages.StandardController(ctc);
+
+        QRCodeExtension q = new QRCodeExtension(std);
+        
+        String response = q.getTheURL();
+        System.debug(response);
+        System.assert(String.isNotBlank(response));
+        
+    }
+}
